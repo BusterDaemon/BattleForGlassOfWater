@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://8cjrq1q2dg5a"]
+
+[ext_resource type="Script" path="res://Scripts/water_screen/active_btn.gd" id="1_4kt6f"]
+[ext_resource type="Script" path="res://Scripts/water_screen/submit.gd" id="1_lwa4y"]
+[ext_resource type="Script" path="res://Scripts/water_screen/generate_coords.gd" id="1_mltul"]
+
+[node name="WaterScreen" type="Node2D"]
+script = ExtResource("1_mltul")
+
+[node name="RootContainer" type="VSplitContainer" parent="." node_paths=PackedStringArray("xtext", "ytext", "btn", "scnRoot")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4kt6f")
+xtext = NodePath("MarginContainer/CoordinatesContainer/XContainer/XEdit")
+ytext = NodePath("MarginContainer/CoordinatesContainer/YContainer/YEdit")
+btn = NodePath("MarginContainer/CoordinatesContainer/SubmitBtn")
+scnRoot = NodePath("..")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RootContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]ПОИСК ВОДЫ[/center]
+Твоя задача угадать координаты расположения источника с водой. Чем раньше ты отгадаешь тем больше очков получишь. За каждый неправильный ответ снимается определённое количество баллов. Так что удачи!"
+fit_content = true
+
+[node name="MarginContainer" type="MarginContainer" parent="RootContainer"]
+layout_mode = 2
+
+[node name="CoordinatesContainer" type="VBoxContainer" parent="RootContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Label" type="Label" parent="RootContainer/MarginContainer/CoordinatesContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "ОЖИДАНИЕ ВВОДА...."
+
+[node name="XContainer" type="HBoxContainer" parent="RootContainer/MarginContainer/CoordinatesContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="XLbl" type="Label" parent="RootContainer/MarginContainer/CoordinatesContainer/XContainer"]
+layout_mode = 2
+text = "Координата по Х:"
+
+[node name="XEdit" type="TextEdit" parent="RootContainer/MarginContainer/CoordinatesContainer/XContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="YContainer" type="HBoxContainer" parent="RootContainer/MarginContainer/CoordinatesContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="YLbl" type="Label" parent="RootContainer/MarginContainer/CoordinatesContainer/YContainer"]
+layout_mode = 2
+text = "Координата по Y:"
+
+[node name="YEdit" type="TextEdit" parent="RootContainer/MarginContainer/CoordinatesContainer/YContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+editable = false
+
+[node name="SubmitBtn" type="Button" parent="RootContainer/MarginContainer/CoordinatesContainer" node_paths=PackedStringArray("Lable", "scnRoot")]
+layout_mode = 2
+disabled = true
+text = "ЕБАНУТЬ ПО КИЕВУ"
+script = ExtResource("1_lwa4y")
+Lable = NodePath("../Label")
+scnRoot = NodePath("../../../..")

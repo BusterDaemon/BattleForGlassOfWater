@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq7f1pkrthvl7"]
+
+[ext_resource type="Script" path="res://Scripts/StartBtn.gd" id="1_m56i4"]
+
+[node name="MenuScreen" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 432.0
+offset_top = 521.0
+offset_right = 790.0
+offset_bottom = 608.0
+text = "START"
+script = ExtResource("1_m56i4")
